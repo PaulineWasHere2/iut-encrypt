@@ -3,7 +3,7 @@
 const Joi = require('joi');
 
 module.exports = {
-  method: 'get',
+  method: 'GET',
   path: '/users',
   options: {
     auth: {

@@ -191,5 +191,17 @@ module.exports = [
         return favorites.map(fav => fav.movie);
       }
     }
+  },
+  {
+    method: 'POST',
+    path: '/movies/export',
+    options: {
+      auth: { scope: ['admin'] },
+      description: 'Demander l\'export des films en CSV et envoi par message broker (admin uniquement)',
+      handler: async (request, h) => {
+        const { adminController } = request.services();
+        return await adminController.requestCsvExport(request, h);
+      }
+    }
   }
 ];
