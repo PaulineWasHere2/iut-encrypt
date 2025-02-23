@@ -16,34 +16,34 @@
 - Un fichier `.env` configuré (voir `iut_project/server/.env-keep`)
 
 ### 2. Installation du projet
-  - git clone https://github.com/PaulineWasHere2/iut-encrypt.git
-  - cd iut-encrypt
-  - npm install
+  - `git clone https://github.com/PaulineWasHere2/iut-encrypt.git`
+  - `cd iut-encrypt`
+  - `npm install`
 
 ### 3. Configuration de l'environnement
 Vous devez copier le fichier .env-keep et renommez-le en .env, puis remplissez les variables nécessaires.
 
 ### 4. Démarrer l'application
-  - npm run dev
+  - `npm run dev`
 Pour la database :
-  - docker run -d --name hapi-mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hapi -e MYSQL_DATABASE=user mysql:8.0 --default-authentication-plugin=mysql_native_password
+  - `docker run -d --name hapi-mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=hapi -e MYSQL_DATABASE=user mysql:8.0 --default-authentication-plugin=mysql_native_password`
   - Voici quelques commandes pour mettre à jour la database (**important!**) :
     - Exécuter les migrations :
-        npx knex migrate:latest
+        `npx knex migrate:latest`
     - Annuler la dernière migration :
-        npx knex migrate:rollback
+        `npx knex migrate:rollback`
     - Refaire toutes les migrations (rollback + migrate:latest) :
-        npx knex migrate:refresh
+        `npx knex migrate:refresh`
 
 ### 5. API Endpoints
   - Un API Swagger est disponible sur le lien : localhost:3306/documentation/
   -  Authentification :
-    - GET /users **Liste de tous les utilisateurs**
-    - POST	/user/login	**Connexion d'un utilisateur avec token Jwt**
-    - POST	/user	**Inscription d'un nouvel user**
-    - PATCH /user/{id} **Modifier un utilisateur**
-    - PATCH /user/{id}/promote **Change le rôle d'un utilisateur en admin**
-    - DELETE /user/{id} **Supprimer un utilisateur**
+    -  GET /users **Liste de tous les utilisateurs**
+    -  POST	/user/login	**Connexion d'un utilisateur avec token Jwt**
+    -  POST	/user	**Inscription d'un nouvel user**
+    -  PATCH /user/{id} **Modifier un utilisateur**
+    -  PATCH /user/{id}/promote **Change le rôle d'un utilisateur en admin**
+    -  DELETE /user/{id} **Supprimer un utilisateur**
   
   - Gestion des films :
     - GET	/movies	**Liste tous les films**
