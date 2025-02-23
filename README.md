@@ -37,23 +37,23 @@ Pour la database :
 
 ### 5. API Endpoints
   - Un API Swagger est disponible sur le lien : localhost:3306/documentation/
-♦ Authentification
-  GET /users **Liste de tous les utilisateurs**
-  POST	/user/login	**Connexion d'un utilisateur avec token Jwt**
-  POST	/user	**Inscription d'un nouvel user**
-  PATCH /user/{id} **Modifier un utilisateur**
-  PATCH /user/{id}/promote **Change le rôle d'un utilisateur en admin**
-  DELETE /user/{id} **Supprimer un utilisateur**
+  -  Authentification :
+    - GET /users **Liste de tous les utilisateurs**
+    - POST	/user/login	**Connexion d'un utilisateur avec token Jwt**
+    - POST	/user	**Inscription d'un nouvel user**
+    - PATCH /user/{id} **Modifier un utilisateur**
+    - PATCH /user/{id}/promote **Change le rôle d'un utilisateur en admin**
+    - DELETE /user/{id} **Supprimer un utilisateur**
   
-♦ Gestion des films
-  GET	/movies	**Liste tous les films**
-  GET	/movies/{id}	**Détails d'un film spécifique**
-  GET /favorites **Voir la liste des films favoris**
-  POST /movies	**Ajouter un film**
-  POST /favorites/{movieId} **Ajouter un film aux favoris**
-  PUT /movies/{id} **Modifier un film**
-  DELETE /movies/{id} **Supprimer un film**
-  DELETE /favorites/{movieId} **Supprimer un film des favoris**
+  - Gestion des films :
+    - GET	/movies	**Liste tous les films**
+    - GET	/movies/{id}	**Détails d'un film spécifique**
+    - GET /favorites **Voir la liste des films favoris**
+    - POST /movies	**Ajouter un film**
+    - POST /favorites/{movieId} **Ajouter un film aux favoris**
+    - PUT /movies/{id} **Modifier un film**
+    - DELETE /movies/{id} **Supprimer un film**
+    - DELETE /favorites/{movieId} **Supprimer un film des favoris**
 
 ## Architecture
 -  Backend : Hapi.js, Node.js, PostgreSQL
