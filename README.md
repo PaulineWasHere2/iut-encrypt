@@ -38,12 +38,12 @@ Pour la database :
 ### 5. API Endpoints
   - Un API Swagger est disponible sur le lien : localhost:3306/documentation/
   -  Authentification :
-    -  GET /users **Liste de tous les utilisateurs**
-    -  POST	/user/login	**Connexion d'un utilisateur avec token Jwt**
-    -  POST	/user	**Inscription d'un nouvel user**
-    -  PATCH /user/{id} **Modifier un utilisateur**
-    -  PATCH /user/{id}/promote **Change le rôle d'un utilisateur en admin**
-    -  DELETE /user/{id} **Supprimer un utilisateur**
+    - GET /users **Liste de tous les utilisateurs**
+    - POST	/user/login	**Connexion d'un utilisateur avec token Jwt**
+    - POST	/user	**Inscription d'un nouvel user**
+    - PATCH /user/{id} **Modifier un utilisateur**
+    - PATCH /user/{id}/promote **Change le rôle d'un utilisateur en admin**
+    - DELETE /user/{id} **Supprimer un utilisateur**
   
   - Gestion des films :
     - GET	/movies	**Liste tous les films**
