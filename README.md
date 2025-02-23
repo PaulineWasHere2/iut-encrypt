@@ -51,6 +51,7 @@ Pour la database :
     - GET /favorites **Voir la liste des films favoris**
     - POST /movies	**Ajouter un film**
     - POST /favorites/{movieId} **Ajouter un film aux favoris**
+    - POST /movies/export **Envoie un fichier Csv des films à l'admin**
     - PUT /movies/{id} **Modifier un film**
     - DELETE /movies/{id} **Supprimer un film**
     - DELETE /favorites/{movieId} **Supprimer un film des favoris**
