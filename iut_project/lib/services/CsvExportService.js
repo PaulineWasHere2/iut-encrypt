@@ -1,4 +1,3 @@
-// Extrait du fichier CsvExportService.js
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const path = require('path');
@@ -31,14 +30,9 @@ class CsvExportService {
           const { userEmail, movies } = message;
 
           try {
-            // Créer le fichier CSV
             const filePath = path.join(__dirname, '../exports', `movies_${Date.now()}.csv`);
             await CsvExportService.generateCsv(filePath, movies);
-
-            // Envoyer le fichier par email
             await CsvExportService.sendEmail(userEmail, filePath);
-
-            // Confirmer que le message a été traité
             channel.ack(msg);
           } catch (error) {
             console.error('Erreur lors du traitement du message:', error);
@@ -93,5 +87,4 @@ class CsvExportService {
     return transporter.sendMail(mailOptions);
   }
 }
-
 module.exports = CsvExportService;

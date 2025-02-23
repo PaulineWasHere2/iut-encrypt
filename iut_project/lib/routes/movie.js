@@ -5,7 +5,6 @@ const Boom = require('@hapi/boom');
 const { sendMail } = require('../services/emailService');
 
 module.exports = [
-  // 📌 Récupérer tous les films (accessible à tous)
   {
     method: 'GET',
     path: '/movies',
@@ -19,7 +18,6 @@ module.exports = [
     }
   },
 
-  // 📌 Récupérer un film par son ID (accessible à tous)
   {
     method: 'GET',
     path: '/movies/{id}',
@@ -38,8 +36,6 @@ module.exports = [
       }
     }
   },
-
-  // 📌 Ajouter un film (admin uniquement)
   {
     method: 'POST',
     path: '/movies',
@@ -69,7 +65,7 @@ module.exports = [
         const emailList = users.map(user => user.email);
 
         try {
-          await mailService.notifyNewMovie(users, newMovie);
+          await mailService.notifyNewMovie(users, newMovie.title);
 
           return h.response(newMovie).code(201);
         } catch (error) {
@@ -80,7 +76,6 @@ module.exports = [
     }
   },
 
-  // 📌 Modifier un film (admin uniquement)
   {
     method: 'PUT',
     path: '/movies/{id}',
@@ -111,15 +106,13 @@ module.exports = [
           .withGraphFetched('user');
 
         const users = await User.query();
-        await mailService.notifyNewMovie(users, newMovie);
+        await mailService.notifyMovieUpdate(users, newMovie.title);
 
         if (!updatedMovie) throw Boom.notFound('Film introuvable');
         return updatedMovie;
       }
     }
   },
-
-  // 📌 Supprimer un film (admin uniquement)
   {
     method: 'DELETE',
     path: '/movies/{id}',
@@ -138,8 +131,6 @@ module.exports = [
       }
     }
   },
-
-  // 📌 Ajouter un film aux favoris d'un utilisateur (user uniquement)
   {
     method: 'POST',
     path: '/favorites/{movieId}',
@@ -154,19 +145,15 @@ module.exports = [
         const userId = request.auth.credentials.id;
         const movieId = request.params.movieId;
 
-        // Vérifie si le film est déjà en favoris
         const existingFav = await Favorite.query().findOne({ user_id: userId, movie_id: movieId });
         if (existingFav) throw Boom.badRequest('Le film est déjà dans vos favoris');
 
-        // Ajoute le film aux favoris
         await Favorite.query().insert({ user_id: userId, movie_id: movieId });
 
         return h.response({ message: 'Film ajouté aux favoris' }).code(201);
       }
     }
   },
-
-  // 📌 Supprimer un film des favoris (user uniquement)
   {
     method: 'DELETE',
     path: '/favorites/{movieId}',
@@ -181,19 +168,15 @@ module.exports = [
         const userId = request.auth.credentials.id;
         const movieId = request.params.movieId;
 
-        // Vérifie si le film est bien dans les favoris
         const existingFav = await Favorite.query().findOne({ user_id: userId, movie_id: movieId });
         if (!existingFav) throw Boom.badRequest('Le film n\'est pas dans vos favoris');
 
-        // Supprime le film des favoris
         await Favorite.query().delete().where({ user_id: userId, movie_id: movieId });
 
         return h.response({ message: 'Film supprimé des favoris' }).code(200);
       }
     }
   },
-
-  // 📌 Voir les favoris de l'utilisateur (user uniquement)
   {
     method: 'GET',
     path: '/favorites',

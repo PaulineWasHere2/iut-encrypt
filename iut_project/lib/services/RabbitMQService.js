@@ -1,4 +1,3 @@
-// Extrait du fichier RabbitMQService.js
 const amqp = require('amqplib/callback_api');
 
 class RabbitMQService {
@@ -12,7 +11,6 @@ class RabbitMQService {
 
           channel.assertQueue(queue, { durable: true });
           channel.sendToQueue(queue, Buffer.from(JSON.stringify(message)), { persistent: true });
-          console.log('Message envoyé à la queue:', queue);
           resolve();
         });
       });

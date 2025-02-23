@@ -1,7 +1,6 @@
-// Extrait du fichier AdminController.js
 const Boom = require('@hapi/boom');
 const { Service } = require('@hapipal/schmervice');
-const RabbitMQService = require('../services/RabbitMQService');  // <-- Import du RabbitMQService
+const RabbitMQService = require('../services/RabbitMQService');
 
 module.exports = class AdminController extends Service {
   async requestCsvExport(request, h) {
