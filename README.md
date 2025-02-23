@@ -37,7 +37,7 @@ Pour la database :
 
 ### 5. API Endpoints
   - Un API Swagger est disponible sur le lien : localhost:3306/documentation/
-  -  Authentification :
+  - Authentification :
     - GET /users **Liste de tous les utilisateurs**
     - POST	/user/login	**Connexion d'un utilisateur avec token Jwt**
     - POST	/user	**Inscription d'un nouvel user**
