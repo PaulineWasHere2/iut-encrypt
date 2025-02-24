@@ -2,7 +2,7 @@
 
 const Joi = require('joi');
 const Boom = require('@hapi/boom');
-const { sendMail } = require('../services/emailService');
+const { sendMail } = require('../../services/emailService');
 
 module.exports = [
   {
